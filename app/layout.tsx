@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
 import { Lora, Nunito_Sans } from "next/font/google";
 
 const lora = Lora({
