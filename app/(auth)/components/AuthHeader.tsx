@@ -20,10 +20,10 @@ export const AuthHeader = ({ title, subtitle }: Props) => {
         />
       </div>
       <div>
-        <h1 className="text-4xl font-serif font-semibold tracking-tight text-[#0FA3B1]">
+        <h1 className="text-4xl font-serif font-semibold tracking-tight text-verbum-teal">
           {title || "Welcome to Verbum"}
         </h1>
-        <p className="text-sm font-sans text-[#5A5A5A] ">{subtitle}</p>
+        <p className="text-sm font-sans text-verbum-gray ">{subtitle}</p>
       </div>
     </CardHeader>
   );

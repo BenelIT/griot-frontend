@@ -14,7 +14,7 @@ export function PasswordInput() {
       <Input
         type={showPassword ? "text" : "password"}
         placeholder="••••••••"
-        className="bg-muted/20 focus-visible:ring-2 focus-visible:ring-[#0FA3B1]"
+        className="bg-muted/20 focus-visible:ring-2 focus-visible:ring-verbum-teal"
       />
       <Button
         type="button"
@@ -24,9 +24,9 @@ export function PasswordInput() {
         onClick={() => setShowPassword(!showPassword)}
       >
         {showPassword ? (
-          <EyeOff className="h-4 w-4 text-gray-500" />
+          <EyeOff className="h-4 w-4 text-verbum-gray" />
         ) : (
-          <Eye className="h-4 w-4 text-gray-500" />
+          <Eye className="h-4 w-4 text-verbum-gray" />
         )}
         <span className="sr-only">
           {showPassword ? "Hide password" : "Show password"}

@@ -122,6 +122,17 @@
 }
 
 @theme {
+  /* Fonts */
   --font-family-sans: var(--font-nunito-sans);
   --font-family-serif: var(--font-lora);
+
+  /* Brand Colors - Verbum Palette */
+  --color-verbum-dark: #2b2b2b; /* Main text */
+  --color-verbum-gray: #5a5a5a; /* Secondary text */
+  --color-verbum-teal: #0fa3b1; /* Titles / Primary button background */
+  --color-verbum-teal-dark: #087782; /* Special logo */
+  --color-verbum-sky: #b5e2fa; /* Secondary background */
+  --color-verbum-cream: #f9f7f3; /* General background */
+  --color-verbum-sand: #eddea4; /* Soft cards */
+  --color-verbum-coral: #f7a072; /* Secondary button background */
 }
