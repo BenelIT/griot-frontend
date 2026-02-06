@@ -120,3 +120,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+@theme {
+  --font-family-sans: var(--font-nunito-sans);
+  --font-family-serif: var(--font-lora);
+}
