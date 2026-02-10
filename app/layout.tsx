@@ -15,8 +15,8 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Verbum | For English learners",
-  description: "A vocabulary learning app for English learners.",
+  title: "Griot | Language as belonging.",
+  description: "A vocabulary learning app for language learners.",
 };
 
 export default function RootLayout({

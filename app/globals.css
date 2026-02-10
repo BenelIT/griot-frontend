@@ -126,13 +126,16 @@
   --font-family-sans: var(--font-nunito-sans);
   --font-family-serif: var(--font-lora);
 
-  /* Brand Colors - Verbum Palette */
-  --color-verbum-dark: #2b2b2b; /* Main text */
-  --color-verbum-gray: #5a5a5a; /* Secondary text */
-  --color-verbum-teal: #0fa3b1; /* Titles / Primary button background */
-  --color-verbum-teal-dark: #087782; /* Special logo */
-  --color-verbum-sky: #b5e2fa; /* Secondary background */
-  --color-verbum-cream: #f9f7f3; /* General background */
-  --color-verbum-sand: #eddea4; /* Soft cards */
-  --color-verbum-coral: #f7a072; /* Secondary button background */
+  /* Brand Colors - Griot Palette */
+  --color-griot-dark: #2b2b2b; /* Main text */
+  --color-griot-gray: #5a5a5a; /* Secondary text */
+  --color-griot-teal: #0fa3b1; /* Titles / Primary button background */
+  --color-griot-teal-dark: #087782; /* Special logo */
+  --color-griot-sky: #b5e2fa; /* Secondary background */
+  --color-griot-cream: #f9f7f3; /* General background */
+  --color-griot-sand: #eddea4; /* Soft cards */
+  --color-griot-coral: #f7a072; /* Secondary button background */
+  --color-griot-teal-light: #7dd3db; /* Para highlights */
+  --color-griot-navy: #1a4d5c; /* Para contraste oscuro */
+  --color-griot-peach: #ffd4bf; /* Coral más suave */
 }

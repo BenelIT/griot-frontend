@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Auth | Verbum",
-  description: "A vocabulary learning app for English learners.",
+  title: "Auth | Griot",
+  description: "A vocabulary learning app for language learners.",
 };
 
 export default function AuthLayout({

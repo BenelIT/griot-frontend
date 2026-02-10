@@ -12,18 +12,18 @@ export const AuthHeader = ({ title, subtitle }: Props) => {
     <CardHeader className="text-center">
       <div className="mx-auto w-24 h-24 relative">
         <Image
-          src="/Isotypes/VerbumIsotypeLight.svg"
-          alt="Verbum Logo"
+          src="/Isotypes/GriotIsotypeLight.svg"
+          alt="Griot Logo"
           fill
           style={{ objectFit: "contain" }}
           priority
         />
       </div>
       <div>
-        <h1 className="text-4xl font-serif font-semibold tracking-tight text-verbum-teal">
-          {title || "Welcome to Verbum"}
+        <h1 className="text-4xl font-serif font-semibold tracking-tight text-griot-teal">
+          {title || "Welcome to Griot"}
         </h1>
-        <p className="text-sm font-sans text-verbum-gray ">{subtitle}</p>
+        <p className="text-sm font-sans text-griot-gray ">{subtitle}</p>
       </div>
     </CardHeader>
   );
