@@ -1,22 +1,57 @@
+"use client";
+
+import { useState } from "react";
+import { ChevronDown, BarChart3 } from "lucide-react";
+
 import { StatsCards } from "@/components/Stats/StatsCards";
 import { words } from "@/mock/words.mock";
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-verbum-cream">
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <div className="space-y-6">
-          <StatsCards words={words} />
+  const [showStats, setShowStats] = useState(false);
 
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="space-y-6 lg:col-span-2">
-              {/* <AddWordForm onAdd={handleAddWord} /> */}
+  return (
+    <div className="min-h-screen bg-griot-cream">
+      <main className="mx-auto max-w-7xl px-3 py-3">
+        <div className="space-y-4 sm:space-y-6 mb-6">
+          {/* Collapsible button only on mobile devices */}
+          <div className="sm:hidden">
+            <button
+              onClick={() => setShowStats(!showStats)}
+              className="w-full flex items-center justify-between px-4 py-3 bg-griot-cream border border-griot-sand/40 
+                          rounded-lg shadow-sm active:scale-[0.98] transition-all duration-200 ease-out"
+            >
+              <div className="flex items-center gap-2">
+                <BarChart3 className="h-4 w-4 text-griot-teal" />
+                <span className="text-sm font-sans text-griot-dark">
+                  View Stats
+                </span>
+              </div>
+              <ChevronDown
+                className={`h-4 w-4 text-griot-gray transition-transform duration-300 ease-in-out ${
+                  showStats ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            <div
+              className={`grid transition-all duration-300 ease-out py-3 overflow-hidden ${
+                showStats
+                  ? "grid-rows-[1fr] opacity-100 mt-3"
+                  : "grid-rows-[0fr] opacity-0 mt-0"
+              }`}
+            >
+              <div className="min-h-0">
+                <StatsCards words={words} />
+              </div>
             </div>
-            <div>{/* <LanguageChart words={words} /> */}</div>
           </div>
-          <h1>Welcome to Verbum</h1>
-          {/* <WordList words={words} onDelete={handleDeleteWord} /> */}
+
+          {/* Stats cards visible on larger screens */}
+          <div className="hidden sm:block">
+            <StatsCards words={words} />
+          </div>
         </div>
+        <h1>Welcome to Griot</h1>
       </main>
     </div>
   );

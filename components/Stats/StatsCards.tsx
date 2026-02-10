@@ -1,7 +1,7 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
 import { BookOpen, Languages, TrendingUp, Clock } from "lucide-react";
+
 import type { Word } from "@/interfaces/word.interface";
 import { StatCard } from "./StatCard";
 
@@ -29,27 +29,37 @@ export const StatsCards = ({ words }: Props) => {
   }).length;
 
   return (
-    <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-      <Card className="border-border bg-card">
-        <StatCard label={"Total words"} value={totalWords} icon={BookOpen} />
-      </Card>
-      <Card className="border-border bg-card">
-        <StatCard
-          label={"Languages"}
-          value={uniqueLanguages}
-          icon={Languages}
-        />
-      </Card>
-      <Card className="border-border bg-card">
-        <StatCard
-          label={"Translations"}
-          value={totalTranslations}
-          icon={TrendingUp}
-        />
-      </Card>
-      <Card className="border-border bg-card">
-        <StatCard label={"This Week"} value={recentWords} icon={Clock} />
-      </Card>
+    <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
+      <StatCard
+        label="Total Words"
+        value={totalWords}
+        icon={BookOpen}
+        variant="secondary"
+      />
+
+      {/* Languages */}
+      <StatCard
+        label="Languages"
+        value={uniqueLanguages}
+        icon={Languages}
+        variant="secondary"
+      />
+
+      {/* Translations */}
+      <StatCard
+        label="Translations"
+        value={totalTranslations}
+        icon={TrendingUp}
+        variant="secondary"
+      />
+
+      {/* This Week */}
+      <StatCard
+        label="This Week"
+        value={recentWords}
+        icon={Clock}
+        variant="secondary"
+      />
     </div>
   );
 };
