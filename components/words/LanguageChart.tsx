@@ -69,9 +69,7 @@ export const LanguageChart = ({ words }: Props) => {
               <div key={code} className="space-y-1.5">
                 <div className="flex items-center justify-between text-sm">
                   <span className="flex items-center gap-2 text-griot-dark">
-                    <span
-                      className={`fi fi-${lang?.countryCode} text-xs`}
-                    ></span>
+                    <span className={`fi fi-${lang?.countryCode} text-xs`} />
                     <span>{lang?.label || code}</span>
                   </span>
                   <span className="font-mono text-xs text-griot-gray">

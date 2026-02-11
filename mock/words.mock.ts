@@ -49,7 +49,7 @@ export const words: Word[] = [
       { language: "es", value: "Libro" },
       { language: "fr", value: "Livre" },
     ],
-    createdAt: "2026-02-02T12:00:00Z",
+    createdAt: "2026-02-11T12:00:00Z",
   },
   {
     id: "6",
@@ -58,6 +58,6 @@ export const words: Word[] = [
       { language: "es", value: "Agua" },
       { language: "fr", value: "Eau" },
     ],
-    createdAt: "2026-02-02T12:00:00Z",
+    createdAt: "2026-01-02T12:00:00Z",
   },
 ];
