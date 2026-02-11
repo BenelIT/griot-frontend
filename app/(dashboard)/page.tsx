@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { ChevronDown, BarChart3 } from "lucide-react";
 
+import { AddWordForm } from "@/components/words/AddWordForm";
+import { LanguageChart } from "@/components/words/LanguageChart";
 import { StatsCards } from "@/components/Stats/StatsCards";
+import { Word } from "@/interfaces/word.interface";
 import { words } from "@/mock/words.mock";
 
 export default function Home() {
@@ -12,6 +15,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-griot-cream">
       <main className="mx-auto max-w-7xl px-3 py-3">
+        {/* Stats section */}
         <div className="space-y-4 sm:space-y-6 mb-6">
           {/* Collapsible button only on mobile devices */}
           <div className="sm:hidden">
@@ -51,7 +55,16 @@ export default function Home() {
             <StatsCards words={words} />
           </div>
         </div>
-        <h1>Welcome to Griot</h1>
+
+        {/* Words section */}
+        <div className="grid gap-6 lg:grid-cols-3">
+          <div className="space-y-6 lg:col-span-2">
+            <AddWordForm />
+          </div>
+          <div>
+            <LanguageChart words={words} />
+          </div>
+        </div>
       </main>
     </div>
   );

@@ -5,8 +5,9 @@ export const words: Word[] = [
     id: "1",
     word: "Hello",
     translations: [
-      { language: "es", value: "Hola" },
       { language: "fr", value: "Bonjour" },
+      { language: "de", value: "Hallo" },
+      { language: "it", value: "Ciao" },
     ],
     createdAt: "2026-02-01T12:00:00Z",
   },
@@ -25,6 +26,8 @@ export const words: Word[] = [
     translations: [
       { language: "es", value: "Coche" },
       { language: "fr", value: "Voiture" },
+      { language: "ko", value: "자동차" },
+      { language: "zh", value: "汽车" },
     ],
     createdAt: "2026-02-02T12:00:00Z",
   },
@@ -34,6 +37,8 @@ export const words: Word[] = [
     translations: [
       { language: "es", value: "Casa" },
       { language: "fr", value: "Maison" },
+      { language: "ru", value: "Дом" },
+      { language: "zh", value: "房子" },
     ],
     createdAt: "2026-02-02T12:00:00Z",
   },
