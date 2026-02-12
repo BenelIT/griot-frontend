@@ -13,13 +13,14 @@ export const StatsCards = ({ words }: Props) => {
   const totalWords = words.length;
 
   const uniqueLanguages = new Set(
-    words.flatMap((word) =>
-      word.translations.map((translation) => translation.language),
+    words.flatMap(
+      (word) =>
+        word.translations?.map((translation) => translation.language) ?? [],
     ),
   ).size;
 
   const totalTranslations = words.reduce(
-    (acc, word) => acc + word.translations.length,
+    (acc, word) => acc + (word.translations?.length ?? 0),
     0,
   );
 

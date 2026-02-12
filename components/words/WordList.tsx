@@ -32,20 +32,20 @@ export const WordList = ({ words }: WordListProps) => {
     return words.filter(
       (w) =>
         w.word.toLowerCase().includes(queryLower) ||
-        w.translations.some((t) => t.value.toLowerCase().includes(queryLower)),
+        w.translations?.some((t) => t.value.toLowerCase().includes(queryLower)),
     );
   }, [words, query]);
 
-  function getLangInfo(code: string) {
+  const getLangInfo = (code: string) => {
     return LANGUAGES.find((language) => language.code === code);
-  }
+  };
 
-  function formatDate(dateString: string) {
+  const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-EN", {
       day: "numeric",
       month: "short",
     });
-  }
+  };
 
   return (
     <Card className="border border-griot-sand/50 bg-griot-cream mt-6">
@@ -118,7 +118,7 @@ export const WordList = ({ words }: WordListProps) => {
 
                     <TableCell>
                       <div className="flex flex-wrap gap-1.5">
-                        {word.translations.map((t) => {
+                        {word.translations?.map((t) => {
                           const lang = getLangInfo(t.language);
                           return (
                             <Badge

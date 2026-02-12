@@ -14,8 +14,15 @@ import {
 } from "@/components/ui/select";
 
 import { LANGUAGES } from "@/interfaces/word.interface";
+import { useState } from "react";
 
 export const AddWordForm = () => {
+  const [meaning, setMeaning] = useState([{ id: 1, language: "", text: "" }]);
+
+  const addMeaning = () => {
+    setMeaning([...meaning, { id: Date.now(), language: "", text: "" }]);
+  };
+
   return (
     <Card className="border border-griot-sand/50 bg-griot-cream">
       <CardHeader>
@@ -59,47 +66,32 @@ export const AddWordForm = () => {
             </div>
           </div>
 
-          {/* Translation Section */}
+          {/* Meaning Section */}
           <div className="space-y-2">
-            <Label className="text-sm font-sans text-griot-dark">
-              Translation
-            </Label>
-            <div className="flex flex-col sm:flex-row gap-2">
-              <Select>
-                <SelectTrigger className="w-full sm:w-45 border border-griot-sand/50 bg-griot-cream text-griot-dark focus-visible:ring-griot-teal">
-                  <SelectValue placeholder="Language" />
-                </SelectTrigger>
-                <SelectContent className="bg-griot-cream">
-                  {LANGUAGES.map((lang) => (
-                    <SelectItem
-                      key={lang.code}
-                      value={lang.code}
-                      className="hover:bg-griot-teal/10 focus:bg-griot-teal-dark/20"
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className={`fi fi-${lang.countryCode}`} />
-                        <span>{lang.label}</span>
-                      </span>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <div className="flex gap-2 flex-1">
-                <Input
-                  placeholder="Translation..."
-                  className="flex-1 border border-griot-sand/50 bg-griot-cream text-griot-dark placeholder:text-griot-gray/50 focus-visible:ring-griot-teal"
-                />
-                <Button
-                  type="button"
-                  size="icon"
-                  variant="outline"
-                  className="shrink-0 bg-griot-teal hover:bg-griot-teal-dark border-griot-teal"
-                >
-                  <Plus className="h-4 w-4 text-griot-cream" />
-                  <span className="sr-only">Add translation</span>
-                </Button>
-              </div>
+            <Label className="text-sm font-sans text-griot-dark">Meaning</Label>
+            <div className="flex flex-col gap-3">
+              {meaning.map((item, index) => (
+                <div key={item.id} className="flex flex-col sm:flex-row gap-2">
+                  <div className="flex gap-2 flex-1">
+                    <Input
+                      placeholder="Meaning..."
+                      className="flex-1 border border-griot-sand/50 bg-griot-cream text-griot-dark placeholder:text-griot-gray/50 focus-visible:ring-griot-teal"
+                    />
+                    {index === meaning.length - 1 && (
+                      <Button
+                        type="button"
+                        size="icon"
+                        variant="outline"
+                        onClick={addMeaning}
+                        className="shrink-0 bg-griot-teal hover:bg-griot-teal-dark border-griot-teal"
+                      >
+                        <Plus className="h-4 w-4 text-griot-cream" />
+                        <span className="sr-only">Add meaning</span>
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

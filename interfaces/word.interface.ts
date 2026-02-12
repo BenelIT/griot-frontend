@@ -4,10 +4,17 @@ export interface Translation {
   value: string;
 }
 
+export interface Tags {
+  id: string;
+  name: string;
+}
+
 export interface Word {
   id: string;
   word: string;
-  translations: Translation[];
+  meaning: string;
+  translations?: Translation[];
+  tags?: Tags[];
   createdAt: string;
 }
 

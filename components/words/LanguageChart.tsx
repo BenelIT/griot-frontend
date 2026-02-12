@@ -11,7 +11,7 @@ export const LanguageChart = ({ words }: Props) => {
   const languageCounts: Record<string, number> = {};
 
   for (const word of words) {
-    for (const translation of word.translations) {
+    for (const translation of word.translations ?? []) {
       languageCounts[translation.language] =
         (languageCounts[translation.language] ?? 0) + 1;
     }

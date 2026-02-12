@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { ChevronDown, BarChart3 } from "lucide-react";
 
+import { WordList } from "@/components/words/WordList";
+import { words } from "@/mock/words.mock";
+
 import { AddWordForm } from "@/components/words/AddWordForm";
 import { LanguageChart } from "@/components/words/LanguageChart";
 import { StatsCards } from "@/components/Stats/StatsCards";
-import { Word } from "@/interfaces/word.interface";
-import { words } from "@/mock/words.mock";
-import { WordList } from "@/components/words/WordList";
 
 export default function Home() {
   const [showStats, setShowStats] = useState(false);

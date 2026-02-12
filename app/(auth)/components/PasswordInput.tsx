@@ -6,7 +6,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export function PasswordInput() {
+export const PasswordInput = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -34,4 +34,4 @@ export function PasswordInput() {
       </Button>
     </div>
   );
-}
+};

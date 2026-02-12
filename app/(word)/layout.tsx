@@ -29,10 +29,10 @@ export default function DashboardLayout({
           {/* Desktop Navigation */}
           <div className="hidden gap-6 text-sm font-sans md:flex">
             <Link href="/" className="hover:text-griot-teal transition-colors">
-              Dashboard
+              Words
             </Link>
             <Link href="/" className="hover:text-griot-teal transition-colors">
-              Example
+              Games
             </Link>
             <Link href="/" className="hover:text-griot-teal transition-colors">
               Example
