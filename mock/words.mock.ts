@@ -1,5 +1,7 @@
 import { Word } from "@/interfaces/word.interface";
 
+const STORAGE_KEY = "linguavault-words";
+
 export const words: Word[] = [
   {
     id: "1",
@@ -89,3 +91,13 @@ export const words: Word[] = [
     createdAt: "2026-01-02T12:00:00Z",
   },
 ];
+
+export function getWords(): Word[] {
+  if (typeof window === "undefined") return words;
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (!stored) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(words));
+    return words;
+  }
+  return JSON.parse(stored);
+}

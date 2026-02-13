@@ -31,7 +31,10 @@ export default function DashboardLayout({
             <Link href="/" className="hover:text-griot-teal transition-colors">
               Words
             </Link>
-            <Link href="/" className="hover:text-griot-teal transition-colors">
+            <Link
+              href="/games"
+              className="hover:text-griot-teal transition-colors"
+            >
               Games
             </Link>
             <Link href="/" className="hover:text-griot-teal transition-colors">
@@ -108,13 +111,13 @@ export default function DashboardLayout({
                 </Link>
 
                 <Link
-                  href="/"
+                  href="/games"
                   className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-griot-teal/10 transition-all group"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <BookOpen className="h-5 w-5 text-griot-teal" />
                   <span className="font-medium font-sans text-griot-gray group-hover:text-griot-teal">
-                    Study
+                    Games
                   </span>
                 </Link>
 
