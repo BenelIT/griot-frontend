@@ -136,16 +136,14 @@ export default function JuegosPage() {
   // --- Step: Language selection ---
   if (step === "language" && selectedGame) {
     return (
-      <div className="min-h-screen bg-background">
-        <main className="mx-auto max-w-4xl px-6 py-8">
-          <LanguageSelector
-            words={eligibleWords}
-            gameTitle={selectedGame.title}
-            minWords={selectedGame.minWords}
-            onSelect={handleSelectLanguage}
-            onBack={handleBackToMenu}
-          />
-        </main>
+      <div className="min-h-screen bg-griot-cream mx-auto ">
+        <LanguageSelector
+          words={eligibleWords}
+          gameTitle={selectedGame.title}
+          minWords={selectedGame.minWords}
+          onSelect={handleSelectLanguage}
+          onBack={handleBackToMenu}
+        />
       </div>
     );
   }
@@ -168,29 +166,21 @@ export default function JuegosPage() {
           return (
             <Card
               key={game.id}
-              className={`group relative overflow-hidden border-border bg-card transition-all ${
+              className={`group relative overflow-hidden border border-griot-sand/50 bg-griot-cream transition-all ${
                 hasEnough
-                  ? "cursor-pointer hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
+                  ? "cursor-pointer hover:border-griot-teal/50 hover:shadow-primary/10 transition-all hover:shadow-xl hover:scale-[1.02]"
                   : "opacity-50"
               }`}
               onClick={() => hasEnough && handleSelectGame(game.id)}
               role={hasEnough ? "button" : undefined}
               tabIndex={hasEnough ? 0 : undefined}
-              onKeyDown={(e) => {
-                if (hasEnough && (e.key === "Enter" || e.key === " ")) {
-                  e.preventDefault();
-                  handleSelectGame(game.id);
-                }
-              }}
             >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${game.color} opacity-0 transition-opacity group-hover:opacity-100`}
-              />
               <CardContent className="relative flex flex-col gap-4 p-6">
                 <div className="flex items-start justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary">
-                    <game.icon className="h-5 w-5 text-foreground" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-griot-teal/10">
+                    <game.icon className="h-5 w-5 text-griot-teal" />
                   </div>
+
                   <Badge
                     variant="outline"
                     className={`text-[10px] font-semibold uppercase tracking-wider ${difficultyColors[game.difficulty]}`}
@@ -198,17 +188,18 @@ export default function JuegosPage() {
                     {game.difficulty}
                   </Badge>
                 </div>
+
                 <div>
-                  <h3 className="text-base font-semibold text-card-foreground">
+                  <h3 className="text-base font-semibold text-griot-teal font-serif">
                     {game.title}
                   </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-1.5 text-sm leading-relaxed text-griot-gray font-sans">
                     {game.description}
                   </p>
                 </div>
                 {!hasEnough && (
                   <p className="text-xs text-destructive">
-                    Necesitas al menos {game.minWords} palabras
+                    You need at least {game.minWords} words.
                   </p>
                 )}
               </CardContent>

@@ -45,7 +45,10 @@ export const AddWordForm = () => {
               />
 
               <Select>
-                <SelectTrigger className="w-full sm:w-45 border border-griot-sand/50 bg-griot-cream text-griot-dark focus-visible:ring-griot-teal">
+                <SelectTrigger
+                  className="w-full sm:w-45 border border-griot-sand/50 bg-griot-cream text-griot-dark 
+                focus-visible:ring-griot-teal cursor-pointer"
+                >
                   <SelectValue placeholder="Language" />
                 </SelectTrigger>
                 <SelectContent className="bg-griot-cream">

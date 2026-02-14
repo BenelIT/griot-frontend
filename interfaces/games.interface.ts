@@ -7,5 +7,4 @@ export interface GameDef {
   icon: LucideIcon;
   minWords: number;
   difficulty: "Easy" | "Medium" | "Hard";
-  color: string;
 }

@@ -45,19 +45,21 @@ export function LanguageSelector({
           variant="ghost"
           size="icon"
           onClick={onBack}
-          className="h-9 w-9 text-muted-foreground hover:text-foreground"
+          className="h-8 w-8 sm:h-9 sm:w-9 text-griot-dark hover:text-griot-teal bg-griot-teal/10 hover:bg-griot-teal/20"
         >
-          <ArrowLeft className="h-4 w-4" />
-          <span className="sr-only">Volver</span>
+          <ArrowLeft className="h-5 w-5" />
         </Button>
+
         <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <Globe className="h-5 w-5 text-primary" />
-            Elige un idioma
+          <h2 className="flex items-center gap-2 text-xl sm:text-3xl font-bold text-griot-teal font-serif">
+            <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-griot-teal" />
+            Choose a language
           </h2>
-          <p className="text-sm text-muted-foreground">
-            Selecciona en que idioma quieres practicar en{" "}
-            <span className="font-medium text-foreground">{gameTitle}</span>
+          <p className="text-xs sm:text-sm text-griot-gray font-sans">
+            Select the language you want to practice in{" "}
+            <span className="font-medium text-griot-dark font-sans">
+              {gameTitle}
+            </span>
           </p>
         </div>
       </div>
@@ -66,43 +68,36 @@ export function LanguageSelector({
         {availableLanguages.map((lang) => (
           <Card
             key={lang.code}
-            className={`group relative overflow-hidden border-border bg-card transition-all ${
+            className={`group relative overflow-hidden border border-griot-sand/50 bg-griot-cream transition-all ${
               lang.hasEnough
-                ? "cursor-pointer hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
+                ? "cursor-pointer hover:border-griot-teal/50 transition-all hover:shadow-xl hover:scale-[1.02] hover:shadow-primary/5"
                 : "opacity-40"
             }`}
             onClick={() => lang.hasEnough && onSelect(lang.code)}
             role={lang.hasEnough ? "button" : undefined}
             tabIndex={lang.hasEnough ? 0 : undefined}
-            onKeyDown={(e) => {
-              if (lang.hasEnough && (e.key === "Enter" || e.key === " ")) {
-                e.preventDefault();
-                onSelect(lang.code);
-              }
-            }}
           >
             <CardContent className="flex items-center gap-4 p-5">
               <span className="text-3xl" role="img" aria-label={lang.label}>
-                <span>{lang?.label}</span>
+                <span className={`fi fi-${lang.countryCode}`} />
               </span>
               <div className="flex-1">
-                <p className="font-semibold text-card-foreground">
+                <p className="font-semibold text-griot-teal-dark font-sans">
                   {lang.label}
                 </p>
-                <p className="text-xs text-muted-foreground">
-                  {lang.wordCount}{" "}
-                  {lang.wordCount === 1 ? "palabra" : "palabras"}
+                <p className="text-xs text-griot-gray font-sans">
+                  {lang.wordCount} {lang.wordCount === 1 ? "word" : "words"}
                 </p>
               </div>
               {lang.hasEnough ? (
                 <Badge
                   variant="secondary"
-                  className="bg-primary/10 text-primary border-primary/20 text-xs"
+                  className="bg-griot-teal/10 text-griot-teal-dark border-griot-teal/20 text-xs"
                 >
-                  Disponible
+                  Available
                 </Badge>
               ) : (
-                <Badge variant="secondary" className="text-xs">
+                <Badge variant="secondary" className="text-xs bg-griot-gray/20">
                   Min. {minWords}
                 </Badge>
               )}
@@ -110,18 +105,6 @@ export function LanguageSelector({
           </Card>
         ))}
       </div>
-
-      {availableLanguages.length === 0 && (
-        <Card className="border-border bg-card">
-          <CardContent className="flex flex-col items-center gap-3 py-12">
-            <Globe className="h-10 w-10 text-muted-foreground" />
-            <p className="text-sm text-muted-foreground">
-              No tienes palabras con traducciones todavia. Agrega algunas desde
-              el dashboard.
-            </p>
-          </CardContent>
-        </Card>
-      )}
     </div>
   );
 }
