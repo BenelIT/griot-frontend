@@ -83,51 +83,57 @@ export default function JuegosPage() {
   if (step === "playing" && selectedGameId && selectedLanguage) {
     return (
       <div className="min-h-screen bg-griot-cream">
-        <main className="mx-auto max-w-4xl px-6 py-8">
+        <main className="w-full max-w-4xl mx-auto px-4 sm:px-6 ">
           <Button
             variant="ghost"
             onClick={handleBackToLanguage}
-            className="mb-6 gap-2 text-muted-foreground hover:text-foreground"
+            className="group fixed left-4 sm:left-6 bottom-4 sm:bottom-6 flex items-center gap-2 bg-griot-teal text-griot-cream 
+            backdrop-blur-sm shadow-lg hover:bg-griot-teal-dark hover:text-griot-cream hover:shadow-xl transition-all duration-300 
+            rounded-full py-3 px-3 hover:px-4 z-50 overflow-hidden"
           >
-            <ArrowLeft className="h-4 w-4" />
-            Cambiar Idioma
+            <ArrowLeft className="h-5 w-5 shrink-0" />
+            <span className="max-w-0 opacity-0 group-hover:max-w-xs group-hover:opacity-100 transition-all duration-300 whitespace-nowrap overflow-hidden">
+              Change Language
+            </span>
           </Button>
 
-          {selectedGameId === "hangman" && (
-            <HangmanGame
-              words={filteredWords}
-              language={selectedLanguage}
-              onBack={handleBackToMenu}
-            />
-          )}
-          {selectedGameId === "multiple-choice" && (
-            <MultipleChoiceGame
-              words={filteredWords}
-              language={selectedLanguage}
-              onBack={handleBackToMenu}
-            />
-          )}
-          {selectedGameId === "scramble" && (
-            <ScrambleGame
-              words={filteredWords}
-              language={selectedLanguage}
-              onBack={handleBackToMenu}
-            />
-          )}
-          {selectedGameId === "speed-round" && (
-            <SpeedRoundGame
-              words={filteredWords}
-              language={selectedLanguage}
-              onBack={handleBackToMenu}
-            />
-          )}
-          {selectedGameId === "memory-match" && (
-            <MemoryMatchGame
-              words={filteredWords}
-              language={selectedLanguage}
-              onBack={handleBackToMenu}
-            />
-          )}
+          <div>
+            {selectedGameId === "hangman" && (
+              <HangmanGame
+                words={filteredWords}
+                language={selectedLanguage}
+                onBack={handleBackToMenu}
+              />
+            )}
+            {selectedGameId === "multiple-choice" && (
+              <MultipleChoiceGame
+                words={filteredWords}
+                language={selectedLanguage}
+                onBack={handleBackToMenu}
+              />
+            )}
+            {selectedGameId === "scramble" && (
+              <ScrambleGame
+                words={filteredWords}
+                language={selectedLanguage}
+                onBack={handleBackToMenu}
+              />
+            )}
+            {selectedGameId === "speed-round" && (
+              <SpeedRoundGame
+                words={filteredWords}
+                language={selectedLanguage}
+                onBack={handleBackToMenu}
+              />
+            )}
+            {selectedGameId === "memory-match" && (
+              <MemoryMatchGame
+                words={filteredWords}
+                language={selectedLanguage}
+                onBack={handleBackToMenu}
+              />
+            )}
+          </div>
         </main>
       </div>
     );

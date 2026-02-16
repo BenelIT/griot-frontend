@@ -129,15 +129,15 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <>
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <Skull className="h-5 w-5 text-primary" />
-            Ahorcado
+          <h2 className="flex items-center gap-2 text-2xl font-bold text-griot-teal font-serif">
+            <Skull className="h-6 w-6 text-griot-teal" />
+            Hangman
           </h2>
-          <p className="text-sm text-muted-foreground">
-            Practicando en{" "}
+          <p className="text-xs text-griot-gray font-sans">
+            Practicing in{" "}
             {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
             {langInfo?.label}
           </p>
@@ -147,22 +147,15 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
         </Badge>
       </div>
 
-      <Card className="border-border bg-card">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-center text-sm font-normal text-muted-foreground">
-            Traduccion en{" "}
-            <span className="font-semibold text-foreground">
-              {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
-              {langInfo?.label}
-            </span>
-          </CardTitle>
+      <Card className=" bg-griot-cream border-griot-sand/50 shadow-sm">
+        <CardHeader className="">
           <p className="text-center text-2xl font-bold text-primary">
             {current.translation.value}
           </p>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="flex justify-center">
-            <svg width="280" height="220" viewBox="60 0 280 220">
+        <CardContent className="">
+          <div className="flex justify-center mb-5">
+            <svg className="w-70 h-55 lg:w-55 lg:h-42.5" viewBox="60 0 280 220">
               <line
                 x1="100"
                 y1="210"
@@ -199,19 +192,23 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
             </svg>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
             {answer.split("").map((ch, i) => (
               <div
                 key={`${ch}-${i}`}
-                className={`flex h-10 w-10 items-center justify-center rounded-lg border-2 text-lg font-bold transition-all ${
+                className={`flex h-9 w-9 items-center justify-center rounded-lg border-2 text-lg font-bold uppercase transition-all ${
                   ch === " "
                     ? "border-transparent"
                     : guessed.has(ch) || gameOver
-                      ? "border-primary/40 bg-primary/10 text-foreground"
-                      : "border-border bg-secondary text-transparent"
+                      ? "border-primary/40 bg-griot-teal text-griot-cream"
+                      : "border-border bg-griot-teal/10 text-transparent"
                 }`}
               >
-                {ch === " " ? "" : guessed.has(ch) || gameOver ? ch : "_"}
+                {ch === " "
+                  ? ""
+                  : guessed.has(ch) || gameOver
+                    ? ch.toUpperCase()
+                    : "_"}
               </div>
             ))}
           </div>
@@ -222,7 +219,7 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
                 <div
                   key={i}
                   className={`h-2 w-6 rounded-full transition-all ${
-                    i < errors ? "bg-destructive" : "bg-secondary"
+                    i < errors ? "bg-destructive" : "bg-griot-teal-dark/10"
                   }`}
                 />
               ))}
@@ -231,7 +228,7 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
 
           {gameOver && (
             <div
-              className={`flex items-center justify-center gap-3 rounded-xl p-4 ${
+              className={`flex items-center justify-center gap-3 rounded-xl p-4 mt-5 mb-5 ${
                 won
                   ? "bg-emerald-500/10 text-emerald-400"
                   : "bg-destructive/10 text-destructive"
@@ -243,13 +240,13 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
                 <XCircle className="h-5 w-5" />
               )}
               <span className="font-semibold">
-                {won ? "Correcto!" : `La palabra era: ${current.word.word}`}
+                {won ? "Correct!" : `The word was: ${current.word.word}`}
               </span>
             </div>
           )}
 
           {!gameOver ? (
-            <div className="flex flex-wrap justify-center gap-1.5">
+            <div className="flex flex-wrap mt-5 justify-center gap-1.5">
               {ALPHABET.map((letter) => {
                 const isGuessed = guessed.has(letter);
                 const isCorrect = answer.includes(letter) && isGuessed;
@@ -261,10 +258,10 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
                     disabled={isGuessed}
                     className={`flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold uppercase transition-all ${
                       isCorrect
-                        ? "bg-primary/20 text-primary"
+                        ? "bg-griot-teal text-griot-cream"
                         : isWrong
                           ? "bg-destructive/15 text-destructive/50"
-                          : "bg-secondary text-foreground hover:bg-accent hover:text-accent-foreground"
+                          : "bg-griot-teal/20 cursor-pointer text-griot-dark hover:bg-griot-teal/50"
                     } disabled:cursor-not-allowed`}
                     aria-label={`Letra ${letter}`}
                   >
@@ -277,15 +274,15 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
             <div className="flex justify-center">
               <Button
                 onClick={nextRound}
-                className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+                className="gap-2 bg-griot-teal text-griot-cream hover:bg-griot-teal/80 font-sans font-bold"
               >
                 <RotateCcw className="h-4 w-4" />
-                Siguiente Ronda
+                Next Round
               </Button>
             </div>
           )}
         </CardContent>
       </Card>
-    </div>
+    </>
   );
 }
