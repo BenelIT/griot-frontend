@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skull, RotateCcw, Trophy, XCircle } from "lucide-react";
 import { LANGUAGES } from "@/interfaces/word.interface";
 import type { Word } from "@/interfaces/word.interface";
+import { TitleGame } from "@/components/games/TitleGame";
 
 interface HangmanGameProps {
   words: Word[];
@@ -129,23 +130,14 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
   ];
 
   return (
-    <>
-      <div className="flex items-center justify-between mb-3">
-        <div>
-          <h2 className="flex items-center gap-2 text-2xl font-bold text-griot-teal font-serif">
-            <Skull className="h-6 w-6 text-griot-teal" />
-            Hangman
-          </h2>
-          <p className="text-xs text-griot-gray font-sans">
-            Practicing in{" "}
-            {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
-            {langInfo?.label}
-          </p>
-        </div>
-        <Badge variant="secondary" className="text-sm font-mono">
-          {score}/{totalRounds}
-        </Badge>
-      </div>
+    <div>
+      <TitleGame
+        title={"Hangman"}
+        round={score}
+        totalQuestions={totalRounds}
+        icon={<Skull className="h-6 w-6 text-griot-teal" />}
+        langInfo={langInfo}
+      />
 
       <Card className=" bg-griot-cream border-griot-sand/50 shadow-sm">
         <CardHeader className="">
@@ -283,6 +275,6 @@ export function HangmanGame({ words, language }: HangmanGameProps) {
           )}
         </CardContent>
       </Card>
-    </>
+    </div>
   );
 }

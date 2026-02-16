@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { LayoutGrid, RotateCcw, CheckCircle2, XCircle } from "lucide-react";
 import { LANGUAGES } from "@/interfaces/word.interface";
 import type { Word } from "@/interfaces/word.interface";
+import { TitleGame } from "@/components/games/TitleGame";
 
 interface MultipleChoiceGameProps {
   words: Word[];
@@ -83,21 +84,18 @@ export function MultipleChoiceGame({
     const pct = Math.round((score / TOTAL_QUESTIONS) * 100);
     return (
       <div className="space-y-6">
-        <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <LayoutGrid className="h-5 w-5 text-primary" />
-            Opcion Multiple
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
-            {langInfo?.label}
-          </p>
-        </div>
+        <TitleGame
+          title={"Multiple Choice"}
+          langInfo={langInfo}
+          round={round}
+          totalQuestions={TOTAL_QUESTIONS}
+          icon={<LayoutGrid className="h-6 w-6 text-griot-teal" />}
+        />
 
-        <Card className="border-border bg-card">
+        <Card className="border-griot-sand/50 border bg-griot-cream">
           <CardContent className="flex flex-col items-center gap-6 py-12">
             <div
-              className={`flex h-20 w-20 items-center justify-center rounded-full ${
+              className={`flex h-25 w-25 p-15 items-center justify-center rounded-full ${
                 pct >= 70 ? "bg-emerald-500/15" : "bg-amber-500/15"
               }`}
             >
@@ -110,25 +108,25 @@ export function MultipleChoiceGame({
               </span>
             </div>
             <div className="text-center">
-              <p className="text-lg font-semibold text-foreground">
+              <p className="text-xl font-bold text-griot-teal font-serif">
                 {pct >= 90
-                  ? "Excelente!"
+                  ? "Excellent!"
                   : pct >= 70
-                    ? "Muy bien!"
+                    ? "Very good!"
                     : pct >= 50
-                      ? "Buen intento!"
-                      : "Sigue practicando!"}
+                      ? "Nice try!"
+                      : "Keep practicing!"}
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                {score} de {TOTAL_QUESTIONS} correctas
+                {score} out of {TOTAL_QUESTIONS} correct
               </p>
             </div>
             <Button
               onClick={restart}
-              className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+              className="gap-2 bg-griot-teal text-griot-cream hover:bg-griot-teal-dark font-sans font-bold"
             >
               <RotateCcw className="h-4 w-4" />
-              Jugar de Nuevo
+              Play Again
             </Button>
           </CardContent>
         </Card>
@@ -137,49 +135,37 @@ export function MultipleChoiceGame({
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <LayoutGrid className="h-5 w-5 text-primary" />
-            Opcion Multiple
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Practicando en{" "}
-            {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
-            {langInfo?.label}
-          </p>
-        </div>
-        <Badge variant="secondary" className="font-mono text-sm">
-          {round}/{TOTAL_QUESTIONS}
-        </Badge>
-      </div>
+    <div>
+      <TitleGame
+        title={"Multiple Choice"}
+        langInfo={langInfo}
+        round={round}
+        totalQuestions={TOTAL_QUESTIONS}
+        icon={<LayoutGrid className="h-6 w-6 text-griot-teal" />}
+      />
 
       <Progress
         value={(round / TOTAL_QUESTIONS) * 100}
-        className="h-2 bg-secondary"
+        className="h-2 bg-griot-teal/20 rounded-full mb-6 [&>div]:bg-griot-teal-dark"
       />
 
-      <Card className="border-border bg-card">
+      <Card className="border-griot-sand/50 border bg-griot-cream">
         <CardHeader className="pb-3">
           <CardTitle className="text-center text-sm font-normal text-muted-foreground">
-            Que palabra significa en{" "}
-            <span className="font-semibold text-foreground">
-              {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
-              {langInfo?.label}
-            </span>
+            What does this word mean?
           </CardTitle>
-          <p className="text-center text-3xl font-bold text-primary">
+          <p className="text-center text-3xl font-bold text-griot-teal font-serif">
             {question.translation.value}
           </p>
         </CardHeader>
+
         <CardContent className="space-y-3 pb-8">
           <div className="grid gap-3 sm:grid-cols-2">
             {question.options.map((option) => {
               const isThisCorrect = option === question.correct.word;
               const isThisSelected = option === selected;
               let style =
-                "border-border bg-secondary text-foreground hover:border-primary/50 hover:bg-accent";
+                "border-griot-teal-dark/50 border bg-griot-teal cursor-pointer font-bold font-sans text-griot-cream hover:bg-griot-teal-dark";
 
               if (answered) {
                 if (isThisCorrect) {
@@ -189,7 +175,8 @@ export function MultipleChoiceGame({
                   style =
                     "border-destructive/50 bg-destructive/10 text-destructive";
                 } else {
-                  style = "border-border bg-secondary/50 text-muted-foreground";
+                  style =
+                    "border-border bg-griot-teal/10 text-muted-foreground";
                 }
               }
 
@@ -216,11 +203,9 @@ export function MultipleChoiceGame({
             <div className="flex justify-center pt-3">
               <Button
                 onClick={nextQuestion}
-                className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+                className="gap-2 bg-griot-teal text-griot-cream hover:bg-griot-teal-dark font-sans font-bold"
               >
-                {round >= TOTAL_QUESTIONS
-                  ? "Ver Resultados"
-                  : "Siguiente Pregunta"}
+                {round >= TOTAL_QUESTIONS ? "View Results" : "Next Question"}
               </Button>
             </div>
           )}
