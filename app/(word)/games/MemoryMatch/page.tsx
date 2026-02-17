@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Layers, RotateCcw, Trophy, Eye } from "lucide-react";
 import { LANGUAGES } from "@/interfaces/word.interface";
 import type { Word } from "@/interfaces/word.interface";
+import { TitleGame } from "@/components/games/TitleGame";
 
 interface MemoryMatchGameProps {
   words: Word[];
@@ -141,48 +142,47 @@ export function MemoryMatchGame({ words, language }: MemoryMatchGameProps) {
     const efficiency =
       totalPairs > 0 ? Math.round((totalPairs / moves) * 100) : 0;
     return (
-      <div className="space-y-6">
-        <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <Layers className="h-5 w-5 text-primary" />
-            Memoria
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            <span className={`fi fi-${langInfo?.countryCode} text-xs`} />{" "}
-            {langInfo?.label}
-          </p>
-        </div>
+      <div>
+        <TitleGame
+          title={"Memory Match"}
+          icon={<Layers className="h-5 w-5 text-griot-teal" />}
+          langInfo={langInfo}
+        />
 
-        <Card className="border-border bg-card">
+        <Card className="border-griot-sand/50 border bg-griot-cream">
           <CardContent className="flex flex-col items-center gap-6 py-12">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
-              <Trophy className="h-10 w-10 text-primary" />
+            <div className="flex h-25 w-25 items-center justify-center rounded-full bg-griot-teal/10">
+              <Trophy className="h-12 w-12 text-griot-teal" />
             </div>
             <div className="text-center">
-              <p className="text-lg font-semibold text-foreground">
-                Todas las parejas encontradas!
+              <p className="text-xl font-bold text-griot-teal font-serif">
+                All the pairs have been found!
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {matches} pares en {moves} movimientos
+              <p className="mt-1 text-sm text-griot-gray font-sans">
+                {matches} pairs in {moves} moves
               </p>
             </div>
 
             <div className="grid w-full max-w-xs grid-cols-2 gap-4 text-center">
-              <div className="rounded-xl bg-secondary p-3">
-                <p className="text-lg font-bold text-foreground">{moves}</p>
-                <p className="text-xs text-muted-foreground">Movimientos</p>
+              <div className="rounded-xl bg-griot-teal p-3">
+                <p className="text-lg font-bold text-griot-cream">{moves}</p>
+                <p className="text-xs text-griot-cream font-bold font-sans">
+                  Moves
+                </p>
               </div>
-              <div className="rounded-xl bg-secondary p-3">
-                <p className="text-lg font-bold text-foreground">
+              <div className="rounded-xl bg-griot-teal p-3">
+                <p className="text-lg font-bold font-sans text-griot-cream">
                   {efficiency}%
                 </p>
-                <p className="text-xs text-muted-foreground">Eficiencia</p>
+                <p className="text-xs text-griot-cream font-bold font-sans">
+                  Efficiency
+                </p>
               </div>
             </div>
 
             <Button
               onClick={restart}
-              className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+              className="gap-2 p-4 bg-griot-teal text-griot-cream font-serif text-sm font-bold hover:bg-griot-teal-dark hover:scale-[1.02] transition-all"
             >
               <RotateCcw className="h-4 w-4" />
               Jugar de Nuevo
@@ -194,25 +194,25 @@ export function MemoryMatchGame({ words, language }: MemoryMatchGameProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div>
       <div className="flex items-center justify-between">
-        <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <Layers className="h-5 w-5 text-primary" />
-            Memoria
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Practicando en{" "}
-            <span className={`fi fi-${langInfo?.countryCode} text-xs`} />{" "}
-            {langInfo?.label}
-          </p>
-        </div>
+        <TitleGame
+          title={"Memory Match"}
+          langInfo={langInfo}
+          icon={<Layers className="h-5 w-5 text-griot-teal" />}
+        />
         <div className="flex items-center gap-2">
-          <Badge variant="secondary" className="font-mono text-sm">
+          <Badge
+            variant="secondary"
+            className="text-sm text-griot-dark font-sans"
+          >
             <Eye className="mr-1 h-3 w-3" />
             {moves}
           </Badge>
-          <Badge variant="secondary" className="font-mono text-sm">
+          <Badge
+            variant="secondary"
+            className="font-sans text-sm text-griot-dark"
+          >
             {matches}/{totalPairs}
           </Badge>
         </div>
@@ -226,29 +226,25 @@ export function MemoryMatchGame({ words, language }: MemoryMatchGameProps) {
               key={card.id}
               onClick={() => handleFlip(card.id)}
               disabled={isRevealed || isChecking}
-              className={`relative flex min-h-[100px] flex-col items-center justify-center gap-1.5 rounded-xl border-2 p-3 text-center transition-all duration-300 ${
-                card.isMatched
-                  ? "border-primary/40 bg-primary/10"
-                  : isRevealed
-                    ? "border-foreground/20 bg-secondary"
-                    : "cursor-pointer border-border bg-card hover:border-primary/30 hover:bg-accent"
-              }`}
-              aria-label={isRevealed ? card.content : "Carta boca abajo"}
+              className={`relative flex min-h-25 flex-col items-center justify-center gap-1.5 rounded-xl border-2 p-3 text-center 
+                transition-all duration-300 ${
+                  card.isMatched
+                    ? "border-griot-teal-dark/50 bg-griot-teal"
+                    : isRevealed
+                      ? "border-griot-teal-dark/50 bg-griot-teal"
+                      : "cursor-pointer  bg-griot-teal-dark/30 border-griot-teal/30 hover:border-griot-teal/30 hover:bg-griot-teal-dark/50 hover:scale-104"
+                }`}
+              aria-label={isRevealed ? card.content : "Card face down"}
             >
               {isRevealed ? (
                 <>
-                  <span className="text-xs text-muted-foreground">
-                    {card.label}
-                  </span>
-                  <span className="text-sm font-bold text-foreground">
+                  <span className="text-lg font-bold text-griot-cream">
                     {card.content}
                   </span>
                 </>
               ) : (
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
-                  <span className="text-lg font-bold text-muted-foreground">
-                    ?
-                  </span>
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-griot-teal">
+                  <span className="text-lg font-bold text-griot-cream">?</span>
                 </div>
               )}
             </button>
@@ -260,10 +256,11 @@ export function MemoryMatchGame({ words, language }: MemoryMatchGameProps) {
         <Button
           variant="ghost"
           onClick={restart}
-          className="gap-2 text-muted-foreground hover:text-foreground"
+          className="gap-2 bg-griot-teal mt-4 text-griot-cream font-bold font-sans 
+          hover:bg-griot-teal-dark hover:scale-[1.02] transition-all hover:text-griot-cream "
         >
           <RotateCcw className="h-4 w-4" />
-          Reiniciar
+          Restart
         </Button>
       </div>
     </div>

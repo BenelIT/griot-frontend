@@ -180,27 +180,31 @@ export function SpeedRoundGame({ words, language }: SpeedRoundGameProps) {
             </div>
 
             <div className="grid w-full max-w-sm grid-cols-3 gap-4 text-center">
-              <div className="rounded-xl bg-secondary p-3">
-                <p className="text-lg font-bold text-griot-teal">
+              <div className="rounded-xl bg-griot-teal p-3">
+                <p className="text-lg font-bold font-sans text-griot-cream">
                   {totalAttempts}
                 </p>
-                <p className="text-xs text-griot-gray">Attempts</p>
+                <p className="text-xs text-griot-cream font-bold">Attempts</p>
               </div>
-              <div className="rounded-xl bg-secondary p-3">
-                <p className="text-lg font-bold text-griot-teal">{accuracy}%</p>
-                <p className="text-xs text-griot-gray">Accuracy</p>
+              <div className="rounded-xl bg-griot-teal p-3">
+                <p className="text-lg font-bold font-sans text-griot-cream">
+                  {accuracy}%
+                </p>
+                <p className="text-xs text-griot-cream font-bold">Accuracy</p>
               </div>
-              <div className="rounded-xl bg-secondary p-3">
-                <p className="text-lg font-bold text-griot-teal">
+              <div className="rounded-xl bg-griot-teal p-3">
+                <p className="text-lg font-bold font-sans text-griot-cream">
                   {bestStreak}
                 </p>
-                <p className="text-xs text-griot-gray">Best streak</p>
+                <p className="text-xs text-griot-cream font-bold">
+                  Best streak
+                </p>
               </div>
             </div>
 
             <Button
               onClick={startGame}
-              className="gap-2 bg-griot-teal text-griot-cream hover:bg-griot-teal-dark hover:scale-103 transition-all"
+              className="gap-2 bg-griot-teal font-bold font-serif text-sm text-griot-cream hover:bg-griot-teal-dark hover:scale-103 transition-all"
             >
               <RotateCcw className="h-4 w-4" />
               Play Again
