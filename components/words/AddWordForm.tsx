@@ -40,6 +40,7 @@ export const AddWordForm = () => {
             <div className="flex flex-col sm:flex-row gap-2">
               <Input
                 id="word"
+                autoFocus
                 placeholder="Enter the word..."
                 className="flex-1 border border-griot-sand/50 bg-griot-cream text-griot-dark placeholder:text-griot-gray/50 focus-visible:ring-griot-teal"
               />

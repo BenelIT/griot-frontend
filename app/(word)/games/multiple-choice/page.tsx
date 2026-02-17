@@ -165,7 +165,7 @@ export function MultipleChoiceGame({
               const isThisCorrect = option === question.correct.word;
               const isThisSelected = option === selected;
               let style =
-                "border-griot-teal-dark/50 border bg-griot-teal cursor-pointer font-bold font-sans text-griot-cream hover:bg-griot-teal-dark";
+                "border-griot-teal-dark/50 border bg-griot-teal cursor-pointer font-bold font-sans text-griot-cream hover:bg-griot-teal-dark transition-all hover:scale-[1.03]";
 
               if (answered) {
                 if (isThisCorrect) {

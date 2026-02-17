@@ -27,12 +27,15 @@ export const TitleGame = ({
           {title}
         </h2>
         <p className="text-xs text-griot-gray font-sans">
-          Practicando en{" "}
+          Practicing in{" "}
           {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
           {langInfo?.label}
         </p>
       </div>
-      <Badge variant="secondary" className="font-mono text-sm">
+      <Badge
+        variant="secondary"
+        className="font-sans text-sm bg-griot-teal text-griot-cream"
+      >
         {round}/{totalQuestions}
       </Badge>
     </div>

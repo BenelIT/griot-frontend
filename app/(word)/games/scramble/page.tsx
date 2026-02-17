@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Shuffle, RotateCcw, Trophy, XCircle, ArrowRight } from "lucide-react";
 import { LANGUAGES } from "@/interfaces/word.interface";
 import type { Word } from "@/interfaces/word.interface";
+import { TitleGame } from "@/components/games/TitleGame";
 
 interface ScrambleGameProps {
   words: Word[];
@@ -83,42 +84,36 @@ export function ScrambleGame({ words, language }: ScrambleGameProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <Shuffle className="h-5 w-5 text-primary" />
-            Letras Mezcladas
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Practicando en{" "}
-            {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
-            {langInfo?.label}
-          </p>
-        </div>
-        <Badge variant="secondary" className="font-mono text-sm">
-          {score}/{totalRounds}
-        </Badge>
-      </div>
+      <TitleGame
+        title={"Mixed Letters"}
+        langInfo={langInfo}
+        round={score}
+        totalQuestions={totalRounds}
+        icon={<Shuffle className="h-5 w-5 text-griot-teal" />}
+      />
 
-      <Card className="border-border bg-card">
+      <Card className="border-griot-sand/50 border bg-griot-cream">
         <CardHeader className="pb-3">
-          <CardTitle className="text-center text-sm font-normal text-muted-foreground">
-            Traduccion en{" "}
-            <span className="font-semibold text-foreground">
+          <CardTitle className="text-center text-xs font-sans text-griot-gray">
+            Translation in{" "}
+            <span className="font-semibold text-griot-gray">
               {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
               {langInfo?.label}
             </span>
           </CardTitle>
-          <p className="text-center text-2xl font-bold text-primary">
+
+          <p className="text-center text-3xl font-bold font-serif text-griot-teal">
             {current.translation.value}
           </p>
         </CardHeader>
+
         <CardContent className="space-y-6">
           <div className="flex flex-wrap items-center justify-center gap-2">
             {scrambled.split("").map((ch, i) => (
               <div
                 key={`${ch}-${i}`}
-                className="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-border bg-secondary text-lg font-bold uppercase text-foreground"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border-2 border-griot-teal-dark bg-griot-teal 
+                text-lg font-bold uppercase text-griot-cream"
               >
                 {ch}
               </div>
@@ -126,12 +121,12 @@ export function ScrambleGame({ words, language }: ScrambleGameProps) {
           </div>
 
           {showHint && status === "playing" && (
-            <p className="text-center text-sm text-muted-foreground">
-              Pista: la palabra empieza con{" "}
-              <span className="font-bold text-primary">
+            <p className="text-center text-sm text-griot-gray font-sans">
+              Hint: The word starts with{" "}
+              <span className="font-bold text-griot-teal-dark">
                 {answer.charAt(0).toUpperCase()}
               </span>{" "}
-              y tiene {answer.length} letras
+              and has {answer.length} letters.
             </p>
           )}
 
@@ -140,17 +135,17 @@ export function ScrambleGame({ words, language }: ScrambleGameProps) {
               <Input
                 value={guess}
                 onChange={(e) => setGuess(e.target.value)}
-                placeholder="Escribe la palabra..."
-                className="flex-1 border-border bg-secondary text-foreground placeholder:text-muted-foreground"
+                placeholder="Write the word..."
+                className="flex-1 border border-griot-sand/50 bg-griot-cream text-griot-dark placeholder:text-griot-gray/50 focus-visible:ring-griot-teal"
                 autoFocus
               />
               <Button
                 type="submit"
                 disabled={!guess.trim()}
-                className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+                className="gap-2 bg-griot-teal text-griot-cream hover:bg-griot-teal-dark hover:scale-[1.02] transition-all"
               >
                 <ArrowRight className="h-4 w-4" />
-                <span className="sr-only sm:not-sr-only">Comprobar</span>
+                <span className="sr-only sm:not-sr-only">Check</span>
               </Button>
             </form>
           ) : null}
@@ -161,9 +156,9 @@ export function ScrambleGame({ words, language }: ScrambleGameProps) {
                 variant="ghost"
                 size="sm"
                 onClick={() => setShowHint(true)}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-griot-cream bg-griot-teal hover:text-griot-cream hover:bg-griot-teal-dark transition-all hover:scale-[1.02]"
               >
-                Mostrar pista
+                Show track
               </Button>
             </div>
           )}
@@ -183,8 +178,8 @@ export function ScrambleGame({ words, language }: ScrambleGameProps) {
               )}
               <span className="font-semibold">
                 {status === "correct"
-                  ? "Correcto!"
-                  : `La palabra era: ${current.word.word}`}
+                  ? "Correct!"
+                  : `The word was: ${current.word.word}`}
               </span>
             </div>
           )}
@@ -193,10 +188,10 @@ export function ScrambleGame({ words, language }: ScrambleGameProps) {
             <div className="flex justify-center">
               <Button
                 onClick={nextRound}
-                className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+                className="gap-2 bg-griot-teal text-griot-cream hover:bg-griot-teal-dark hover:scale-[1.02] transition-all font-sans font-bold"
               >
                 <RotateCcw className="h-4 w-4" />
-                Siguiente Ronda
+                Next Round
               </Button>
             </div>
           )}
