@@ -87,8 +87,6 @@ export function MultipleChoiceGame({
         <TitleGame
           title={"Multiple Choice"}
           langInfo={langInfo}
-          round={round}
-          totalQuestions={TOTAL_QUESTIONS}
           icon={<LayoutGrid className="h-6 w-6 text-griot-teal" />}
         />
 

@@ -9,6 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { Timer, RotateCcw, Trophy, Play, Zap } from "lucide-react";
 import { LANGUAGES } from "@/interfaces/word.interface";
 import type { Word } from "@/interfaces/word.interface";
+import { TitleGame } from "@/components/games/TitleGame";
 
 interface SpeedRoundGameProps {
   words: Word[];
@@ -119,41 +120,35 @@ export function SpeedRoundGame({ words, language }: SpeedRoundGameProps) {
   if (gameState === "idle") {
     return (
       <div className="space-y-6">
-        <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <Timer className="h-5 w-5 text-primary" />
-            Contrarreloj
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Practicando en{" "}
-            {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
-            {langInfo?.label}
-          </p>
-        </div>
+        <TitleGame
+          title={"Speed Round"}
+          langInfo={langInfo}
+          icon={<Timer className="h-5 w-5 text-griot-teal" />}
+        />
 
-        <Card className="border-border bg-card">
+        <Card className="border-griot-sand/50 border bg-griot-cream">
           <CardContent className="flex flex-col items-center gap-6 py-12">
-            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary/10">
-              <Zap className="h-10 w-10 text-primary" />
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-griot-teal/10">
+              <Zap className="h-10 w-10 text-griot-teal" />
             </div>
             <div className="text-center">
-              <p className="text-lg font-semibold text-foreground">
-                Tienes 60 segundos
+              <p className="text-lg font-semibold text-griot-dark font-sans">
+                You have 60 seconds
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Se mostrara una traduccion en{" "}
+              <p className="mt-1 text-sm text-griot-gray font-sans">
+                A translation will be shown in{" "}
                 {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
-                {langInfo?.label} y debes escribir la palabra original lo mas
-                rapido posible
+                {langInfo?.label}, and you must type the original word as
+                quickly as possible.
               </p>
             </div>
             <Button
               onClick={startGame}
-              className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+              className="gap-2 bg-griot-teal text-griot-cream hover:bg-griot-teal-dark font-bold font-serif"
               size="lg"
             >
               <Play className="h-5 w-5" />
-              Comenzar
+              Start
             </Button>
           </CardContent>
         </Card>
@@ -166,54 +161,49 @@ export function SpeedRoundGame({ words, language }: SpeedRoundGameProps) {
       totalAttempts > 0 ? Math.round((score / totalAttempts) * 100) : 0;
     return (
       <div className="space-y-6">
-        <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <Timer className="h-5 w-5 text-primary" />
-            Contrarreloj
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
-            {langInfo?.label}
-          </p>
-        </div>
+        <TitleGame
+          title={"Speed Round"}
+          langInfo={langInfo}
+          icon={<Timer className="h-5 w-5 text-griot-teal" />}
+        />
 
-        <Card className="border-border bg-card">
+        <Card className="border-griot-sand/50 border bg-griot-cream">
           <CardContent className="flex flex-col items-center gap-6 py-12">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
-              <Trophy className="h-10 w-10 text-primary" />
+            <div className="flex h-25 w-25 items-center justify-center rounded-full bg-griot-teal/10">
+              <Trophy className="h-12 w-12 text-griot-teal" />
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-foreground">{score}</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                palabras correctas
+              <p className="text-3xl font-bold text-griot-teal">{score}</p>
+              <p className="mt-1 text-sm text-griot-gray font-sans">
+                correct words
               </p>
             </div>
 
             <div className="grid w-full max-w-sm grid-cols-3 gap-4 text-center">
               <div className="rounded-xl bg-secondary p-3">
-                <p className="text-lg font-bold text-foreground">
+                <p className="text-lg font-bold text-griot-teal">
                   {totalAttempts}
                 </p>
-                <p className="text-xs text-muted-foreground">Intentos</p>
+                <p className="text-xs text-griot-gray">Attempts</p>
               </div>
               <div className="rounded-xl bg-secondary p-3">
-                <p className="text-lg font-bold text-foreground">{accuracy}%</p>
-                <p className="text-xs text-muted-foreground">Precision</p>
+                <p className="text-lg font-bold text-griot-teal">{accuracy}%</p>
+                <p className="text-xs text-griot-gray">Accuracy</p>
               </div>
               <div className="rounded-xl bg-secondary p-3">
-                <p className="text-lg font-bold text-foreground">
+                <p className="text-lg font-bold text-griot-teal">
                   {bestStreak}
                 </p>
-                <p className="text-xs text-muted-foreground">Mejor racha</p>
+                <p className="text-xs text-griot-gray">Best streak</p>
               </div>
             </div>
 
             <Button
               onClick={startGame}
-              className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+              className="gap-2 bg-griot-teal text-griot-cream hover:bg-griot-teal-dark hover:scale-103 transition-all"
             >
               <RotateCcw className="h-4 w-4" />
-              Jugar de Nuevo
+              Play Again
             </Button>
           </CardContent>
         </Card>
@@ -223,13 +213,14 @@ export function SpeedRoundGame({ words, language }: SpeedRoundGameProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <Timer className="h-5 w-5 text-primary" />
-            Contrarreloj
+          <h2 className="flex items-center gap-2 text-xl sm:text-2xl font-bold text-griot-teal font-serif">
+            <Timer className="h-5 w-5 text-griot-teal" />
+            Speed Round
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-griot-gray font-sans">
+            Practicing in{" "}
             {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
             {langInfo?.label}
           </p>
@@ -237,11 +228,11 @@ export function SpeedRoundGame({ words, language }: SpeedRoundGameProps) {
         <div className="flex items-center gap-3">
           {streak > 1 && (
             <Badge variant="secondary" className="gap-1 text-sm">
-              <Zap className="h-3 w-3 text-primary" />
-              {streak} racha
+              <Zap className="h-3 w-3 text-griot-dark" />
+              {streak} streak
             </Badge>
           )}
-          <Badge variant="secondary" className="font-mono text-sm">
+          <Badge variant="secondary" className="font-sans text-sm">
             {score} pts
           </Badge>
         </div>
@@ -249,10 +240,10 @@ export function SpeedRoundGame({ words, language }: SpeedRoundGameProps) {
 
       <div className="space-y-1">
         <div className="flex items-center justify-between text-sm">
-          <span className="text-muted-foreground">Tiempo restante</span>
+          <span className="text-griot-dark">Time remaining</span>
           <span
             className={`font-mono font-bold ${
-              timeLeft <= 10 ? "text-destructive" : "text-foreground"
+              timeLeft <= 10 ? "text-destructive" : "text-griot-dark"
             }`}
           >
             {formatTime(timeLeft)}
@@ -260,28 +251,28 @@ export function SpeedRoundGame({ words, language }: SpeedRoundGameProps) {
         </div>
         <Progress
           value={(timeLeft / GAME_DURATION) * 100}
-          className="h-2.5 bg-secondary"
+          className="h-2 bg-griot-teal/20 rounded-full mb-6 [&>div]:bg-griot-teal-dark"
         />
       </div>
 
       <Card
-        className={`border-border bg-card transition-colors ${
+        className={`border-griot-sand/50 border bg-griot-cream transition-colors ${
           feedback === "correct"
-            ? "border-emerald-500/50"
+            ? "border-green-400 border-2"
             : feedback === "wrong"
-              ? "border-destructive/50"
+              ? "border-destructive/50 border-2"
               : ""
         }`}
       >
         <CardHeader className="pb-3">
-          <CardTitle className="text-center text-sm font-normal text-muted-foreground">
-            Traduccion en{" "}
+          <CardTitle className="text-center text-sm font-normal text-griot-gray font-sans pb-2">
+            Translation in{" "}
             <span className="font-semibold text-foreground">
               {<span className={`fi fi-${langInfo?.countryCode} text-xs`} />}{" "}
               {langInfo?.label}
             </span>
           </CardTitle>
-          <p className="text-center text-3xl font-bold text-primary">
+          <p className="text-center text-3xl font-bold text-griot-teal font-serif">
             {current.translation.value}
           </p>
         </CardHeader>
@@ -291,17 +282,17 @@ export function SpeedRoundGame({ words, language }: SpeedRoundGameProps) {
               ref={inputRef}
               value={guess}
               onChange={(e) => setGuess(e.target.value)}
-              placeholder="Escribe la palabra..."
-              className="flex-1 border-border bg-secondary text-foreground placeholder:text-muted-foreground"
+              placeholder="Write the word..."
+              className="flex-1 border border-griot-sand/50 bg-griot-cream text-griot-dark placeholder:text-griot-gray/50 focus-visible:ring-griot-teal"
               autoFocus
               autoComplete="off"
             />
             <Button
               type="submit"
               disabled={!guess.trim()}
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="gap-2 bg-griot-teal text-griot-cream hover:bg-griot-teal-dark hover:scale-[1.02] transition-all"
             >
-              Enviar
+              Check
             </Button>
           </form>
         </CardContent>

@@ -7,8 +7,8 @@ interface Props {
     label: string;
     countryCode: string;
   } | null;
-  round: number;
-  totalQuestions: number;
+  round?: number;
+  totalQuestions?: number;
   icon: React.ReactNode;
 }
 
@@ -32,12 +32,14 @@ export const TitleGame = ({
           {langInfo?.label}
         </p>
       </div>
-      <Badge
-        variant="secondary"
-        className="font-sans text-sm bg-griot-teal text-griot-cream"
-      >
-        {round}/{totalQuestions}
-      </Badge>
+      {round !== undefined && totalQuestions !== undefined && (
+        <Badge
+          variant="secondary"
+          className="font-sans text-sm bg-griot-teal text-griot-cream"
+        >
+          {round}/{totalQuestions}
+        </Badge>
+      )}
     </div>
   );
 };
